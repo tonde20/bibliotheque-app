@@ -651,13 +651,15 @@ class OngletLecteurs(QWidget):
                     f"N° reçu : {res['numero_recu']}\n"
                     f"Du {res['date_debut']} au {res['date_fin']}\n"
                     f"Durée : {res['duree_jours']} jours\n"
-                    f"Montant : {res['montant']:.0f} FCFA\n"
+                    f"Montant : {res['montant']:.0f} FCFA"
                 )
-                if pdf:
-                    msg += f"\nReçu PDF :\n{pdf}"
-                if carte:
-                    msg += f"\n\nCarte d'abonné :\n{carte}"
                 QMessageBox.information(self, "Abonnement enregistré", msg)
+                # Ouvrir automatiquement le reçu et la carte dans le lecteur PDF
+                import os as _os
+                if pdf and _os.path.isfile(pdf):
+                    _os.startfile(pdf)
+                if carte and _os.path.isfile(carte):
+                    _os.startfile(carte)
                 self._charger_abonnements()
             except Exception as e:
                 QMessageBox.critical(self, "Erreur", str(e))
