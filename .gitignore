@@ -1,0 +1,20 @@
+# Données sensibles - ne jamais publier
+cle_privee.pem
+licences_generees/
+licence.key
+bibliotheque.db
+bibliotheque.db-wal
+bibliotheque.db-shm
+
+# Fichiers compilés
+dist/
+build/
+__pycache__/
+*.pyc
+*.pycache
+
+# Fichiers temporaires
+*.tmp
+backups/
+rapports/
+recus/
